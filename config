@@ -240,5 +240,9 @@ bindsym --locked XF86MonBrightnessDown exec --no-startup-id light -U 10
 # Start clipman
 exec wl-paste -t text --watch clipman store
 
+# Screen shots with grim and slurp
+bindsym $mod+Print exec /usr/bin/grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
+bindsym $mod+Shift+Print exec /usr/bin/grim -g "$(/usr/bin/slurp)" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
+
 include /etc/sway/config.d/*
 
