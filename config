@@ -42,8 +42,6 @@ exec swayidle -w \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
 
-
-
 ### Input configuration
 #
 # I do not like natural_scroll
@@ -111,6 +109,9 @@ input * {
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
+    # Add alt + tab behaviour as always focusing right
+    bindsym Mod1+Tab focus right
 #
 # Workspaces:
 #
