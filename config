@@ -112,6 +112,8 @@ input * {
 
     # Add alt + tab behaviour as always focusing right
     bindsym Mod1+Tab focus right
+    bindsym Mod1+Shift+Tab focus left
+    
 #
 # Workspaces:
 #
