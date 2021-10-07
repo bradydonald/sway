@@ -256,3 +256,6 @@ bindsym Shift+Print exec /usr/bin/grim -g "$(/usr/bin/slurp)" $(xdg-user-dir PIC
 
 include /etc/sway/config.d/*
 
+# always check lid status on reload
+exec_always ~/src/sway/clamshell-reload.sh
+
