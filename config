@@ -65,7 +65,7 @@ exec swayidle -w \
 # Read `man 5 sway-input` for more information about this section.
 
 input * {
-      xkb_options "ctrl:nocaps,ctrl:swapcaps"
+      xkb_options "ctrl:nocaps"
 }
       
 ### Key bindings
