@@ -247,6 +247,9 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym --locked XF86MonBrightnessUp exec --no-startup-id light -A 10
 bindsym --locked XF86MonBrightnessDown exec --no-startup-id light -U 10
 
+# make it easy to launch control panel
+bindsym XF86Tools exec gnome-control-center
+
 # Start clipman
 exec wl-paste -t text --watch clipman store
 
