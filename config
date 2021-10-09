@@ -18,7 +18,8 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu -l 20 | xargs swaymsg exec --
+#set $menu dmenu_path | dmenu -l 20 | xargs swaymsg exec --
+set $menu albert toggle
 
 ### Output configuration
 #
@@ -244,8 +245,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Brightness controls
 # requires installing "light"
-bindsym --locked XF86MonBrightnessUp exec --no-startup-id light -A 10
-bindsym --locked XF86MonBrightnessDown exec --no-startup-id light -U 10
+bindsym --locked XF86MonBrightnessUp exec --no-startup-id light -A 5
+bindsym --locked XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 # make it easy to launch control panel
 bindsym XF86Tools exec gnome-control-center
