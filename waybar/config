@@ -4,8 +4,8 @@
     "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    // "modules-center": ["sway/window"],
     // this is the default line
     // "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
     "modules-right": [
@@ -143,10 +143,13 @@
     },
     "custom/nwggrid": {
         "format": "{icon} {}",
-        "exec": "nwggrid",
-        "max-length": 40,
-        "format": "grid",
-        "escape": true
+        "on-click": "nwggrid",
+        "max-length": 50,
+        "format": "{icon}",
+        "escape": true,
+        "format-icons": {
+            "default": ""
+        }
     }
 }
 
