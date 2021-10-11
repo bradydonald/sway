@@ -148,8 +148,9 @@
         "format": "{icon}",
         "escape": true,
         "format-icons": {
-            "default": ""
+            "default": ""
         }
     }
+
 }
 
