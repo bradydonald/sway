@@ -246,8 +246,8 @@ bindsym XF86AudioMicMute+ exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Brightness controls
 # requires installing "light"
-bindsym --locked XF86MonBrightnessDown+ exec --no-startup-id light -A 5
-bindsym --locked XF86MonBrightnessUp+ exec --no-startup-id light -U 5
+bindsym --locked XF86MonBrightnessUp+ exec --no-startup-id light -A 5
+bindsym --locked XF86MonBrightnessDown+ exec --no-startup-id light -U 5
 
 # make it easy to launch control panel
 bindsym XF86Launch1+ exec gnome-control-center
