@@ -4,27 +4,33 @@
 # Read `man 5 sway` for a complete reference.
 #
 
+font pango: JetBrains Mono 10
+
+# Disable_window_borders
+default_border pixel 2
+default_floating_border pixel 0
+
+# Set inner/outer gaps
+gaps inner 5
+gaps outer 0
+
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
+set $term foot
 set $menu dmenu_path | dmenu -l 20 | xargs swaymsg exec --
-#set $menu albert toggle
+#set $menu $HOME/.local/bin/rofi_applauncher
+set $win-list $HOME/.local/bin/rofiwindow
+set $power-menu $HOME/.config/sway/scripts/rofi_powermenu
 
-### Output configuration
-#
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/default.png fill
+output * bg ~/Pictures/backgrounds/expanse.png fill
 
 #
 # Example configuration:
@@ -70,6 +76,7 @@ input * {
       xkb_options "ctrl:nocaps"
 }
       
+
 ### Key bindings
 #
 # Basics:
