@@ -1,4 +1,3 @@
-#
 # This is my sway window manager config. 
 #
 # Read `man 5 sway` for a complete reference.
@@ -63,7 +62,7 @@ exec swayidle -w \
     input "1267:12699:ASUE120A:00_04F3:319B_Touchpad" {
       dwt enabled
       tap enabled
-#      natural_scroll disabled
+      natural_scroll disabled
       middle_emulation enabled
       pointer_accel 0.6
       accel_profile adaptive
@@ -242,14 +241,19 @@ bar {
 }
 
 # Pulse Audio Controls
-# requires installing pulseadio-utils
-bindsym XF86AudioRaiseVolume+ exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume+ exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+# requires installing pulseaudio-utils
+#bindsym XF86AudioRaiseVolume+ exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+#bindsym XF86AudioLowerVolume+ exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 #bindsym XF86AudioMicMute+ exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute+ exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#bindsym XF86AudioMicMute+ exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 #bindsym XF86AudioPlay exec playerctl play-pause
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
+
+bindsym XF86AudioRaiseVolume exec "pw-volume change +2.5%; pkill -RTMIN+8 waybar"
+bindsym XF86AudioLowerVolume exec "pw-volume change -2.5%; pkill -RTMIN+8 waybar"
+bindsym XF86AudioMute exec "pw-volume mute toggle; pkill -RTMIN+8 waybar"
+
 
 # Brightness controls
 # requires installing "light"

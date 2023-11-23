@@ -1,13 +1,9 @@
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-     "height": 28, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
+    "height": 28, // Waybar height (to be removed for auto height)
 
-    // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", ],
     "modules-center": ["sway/window"],
-    "modules-right": ["cpu", "memory", "network", "pulseaudio", "pulseaudio#mic", "custom/swayidle", "clock", "tray"],
+    "modules-right": ["network", "pipewire", "bluetooth", "battery", "custom/swayidle", "clock", "tray"],
 
     // Modules configuration
      "sway/workspaces": {
@@ -26,6 +22,7 @@
         // "icon-size": 14,
         "spacing": 10
     },
+    
     "clock": {
         "format": "{:%H:%M}",
         "format-alt": "{:%a, %m.%d %H:%M}",
@@ -56,6 +53,7 @@
         "tooltip": false
 
     },
+
     "cpu": {
         "format": "CPU: {usage}%",
         "tooltip": false,
@@ -80,24 +78,39 @@
         "on-click": "nm-connection-editor"
     },
 
-    "pulseaudio": {
-        "format": "{icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "Mute",
+    "custom/pipewire": {
+        "exec": "pw-volume status",
+        "return-type": "json",
+        "interval": "once",
+        "signal": 8,
+        "format": "{icon} {percentage}",
         "format-icons": {
-            "headphone": "",
-            "headset": "󰋎",
+            "mute": "",
             "default": ["", "", " "]
-        },
-        "on-click": "pavucontrol"
+        }
     },
 
-    "pulseaudio#mic": {
-        "format": "{format_source}",
-        "format-source": "",
-        "format-source-muted": "",
-        "format-bluetooth": "{format_source}",
-        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    },
+
+    "battery": {
+        "bat": "BAT2",
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 25
     },
 
     "custom/swayidle": {
