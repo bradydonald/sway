@@ -1,0 +1,21 @@
+#!/bin/bash
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4 foldmethod=marker
+# ----------------------------------------------------------------------
+
+
+function set_wallpaper() {
+    # background|bg
+    # stretch|fill|fit|center|tile
+    swaymsg -s $SWAYSOCK output "* bg $1 fill"
+    notify-send -i "$1" -t 5000 'Selected wallpaper: ' "$1"
+}
+
+case "$1" in
+    default)
+        set_wallpaper "${HOME}/.config/wallpaper"
+        ;;
+    *)
+        [ -f "$1" ] && set_wallpaper "$1"
+        ;;
+esac
+

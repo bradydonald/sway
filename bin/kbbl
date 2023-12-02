@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Requirments:
+#   sudo visudo
+#   your_username_goes_here ALL=NOPASSWD:/usr/local/bin/ds.backlight up, /usr/local/bin/ds.backlight down
+#
+
+BACKLIGHT='/sys/class/leds/smc::kbd_backlight/brightness'
+VALUE=$(cat $BACKLIGHT)
+#INCREMENT=32
+INCREMENT=16
+TOTAL=unset
+
+case $1 in
+up)
+    TOTAL=`expr $VALUE + $INCREMENT`
+    ;;
+down)
+    TOTAL=`expr $VALUE - $INCREMENT`
+    ;;
+full)
+    TOTAL=255
+    ;;
+off)
+    TOTAL=0
+    ;;
+to)
+    input=$2
+    if [[ $input =~ ^[0-9]+$ ]]; then
+        # Check if the number is within the range [0, 255]
+        if ((input >= 0 && input <= 255)); then
+            TOTAL=$input
+        fi
+    fi
+    ;;
+esac
+
+if [ $TOTAL == unset ]; then
+    echo "Please specify up, down, full, or off"
+    exit 1
+fi
+
+if [ $TOTAL -gt 255 ]; then TOTAL=255; fi
+if [ $TOTAL -lt 0 ]; then TOTAL=0; fi
+
+echo $TOTAL > $BACKLIGHT

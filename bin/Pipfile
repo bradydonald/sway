@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+docutils = "==0.15.2"
+lockfile = "==0.12.2"
+python-daemon = "==3.0.1"
+pillow = "==10.1.0"
+youtube-dl = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
